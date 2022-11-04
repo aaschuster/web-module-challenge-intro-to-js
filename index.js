@@ -20,7 +20,10 @@ Do the following:
    HINT: no function required
 */
 
-
+const votingAge = 6708;
+if (votingAge>=18) {
+  console.log('True!');
+} 
 
 /*
 Task 1b - Values (not auto tested)
@@ -34,7 +37,13 @@ Do the following:
    HINT: no function required
 */
 
+let firstThing = 45;
+const secondThing = 45.1;
 
+if (firstThing<secondThing) {
+  firstThing = 0.001;
+  console.log(firstThing);
+}
 
 
 
@@ -49,8 +58,9 @@ Do the following:
    HINT: look up the Number method
 */
 
-
-
+let bigNum = "1999";
+bigNum = Number(bigNum);
+console.log(bigNum);
 
 /*
 Task 1d - Multiply
@@ -64,7 +74,7 @@ Do the following:
 function multiply(num1, num2){
   return num1 * num2;
 }
-
+console.log(multiply(0,6));
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -77,11 +87,11 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+function dogYears(age){
+  const multiplier=7;
+  return age*multiplier;
 }
-
-
+console.log(dogYears(4));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -129,11 +139,32 @@ NOTE 2: This is a great time to check the tests to see what it expects, versus w
         So, on this one test, the weight would be 4 pounds, and the age would be 1 years old. It's expecting your function to return a decimal number of 0.2
 */  
 
-function hungryDog(/*add your code here*/){
-  /*add your code here*/
+function hungryDog(wt,age){
+  let percent;
+
+  if (age>=1) { //adult dog
+    if (wt<=5) {
+      percent=0.05;
+    } else if ((wt>=6) && (wt<=10)) {
+      percent=0.04;
+    } else if ((wt >= 11) && (wt<=15)) {
+      percent=0.03;
+    } else if (wt>15) {
+      percent=0.02;
+    } 
+  } else if (age<1) {//puppy
+    age*=12; //convert age to months
+    if ((age>=2) && (age<4)) {
+      percent=0.1;
+    } else if ((age>=4)&&(age<7)) {
+      percent=0.05;
+    } else if (age>=7) {
+      percent=0.04;
+    } 
+  } 
+  return wt*percent;
 }
-
-
+console.log(hungryDog(6,2));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -157,9 +188,53 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 */
 
 function game(user, computer){
-  /*add your code here*/
+let result; //from perspective of user
+
+  if (computer===user) {
+    result="tie";
+  }
+
+  if (computer==="rock") {
+    if (user==="paper"){
+      result="win";
+    } else if (user==="scissors") {
+      result="loss";
+    }
+  } else if (computer==="paper") {
+    if (user==="rock") {
+      result="loss";
+    } else if (user==="scissors") {
+      result="win";
+    }
+  } else if (computer==="scissors") {
+    if (user==="rock") {
+      result="win";
+    } else if (user==="paper") {
+      result="loss";
+    }
+  }
+
+  if (result==="win") {
+    return "you win!"
+  } else if (result==="loss") {
+    return "you lose!";
+  } else if (result==="tie") {
+    return "it's a tie";
+  }
 }
 
+let compNum = Math.round(Math.random()*2);
+let compStr;
+
+if (compNum===0) {
+  compStr="rock";
+} else if (compNum===1) {
+  compStr="paper";
+} else if (compNum===2) {
+  compStr="scissors";
+}
+
+console.log(game("rock",compStr));
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
